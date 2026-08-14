@@ -10,3 +10,8 @@ Also transitions may feel odd but they are (mostly) reversible as in A to B goes
 But some doors function in an odd manner causing it not to be reversible the same way, rabbit hole and the ward are good examples
 
 Randomized items in shops will cost 3x their sell value or in cases where there is no sell value will cost the same as the item they replace
+
+
+Safety mode tries to make it so all rooms are possible to enter, but this may cause some lag at times
+
+Also reason why some library dream rooms may appear inaccessible is because of the connection being behind the light door or you may have to enter chaos dungeon to get to the prisons up to rngesus tho

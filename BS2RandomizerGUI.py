@@ -8,7 +8,7 @@ import tkinter as tk
 from tkinter import ttk, filedialog, messagebox
 
 APP_TITLE = "BLACK SOULS II Simple Randomizer"
-MOD_NAME = b"BS2 Simple Randomizer v0.6"
+MOD_NAME = b"BS2 Simple Randomizer v0.8"
 ARCHIVE_NAME = "Game.rgss3a"
 ARCHIVE_BACKUP_SUFFIX = ".bs2randomizer_backup"
 SCRIPTS_ENTRY_NAME = "data/scripts.rvdata2"
@@ -22,6 +22,7 @@ DEFAULTS = {
     "room_transition_randomization": "false",
     "regional_transition_randomization": "false",
     "regional_randomization": "false",
+    "safety": "false",
 }
 
 
@@ -507,6 +508,7 @@ def write_config(game_dir, values):
         f"room_transition_randomization={values['room_transition_randomization']}\n"
         f"regional_transition_randomization={values['regional_transition_randomization']}\n"
         f"regional_randomization={values['regional_randomization']}\n"
+        f"safety={values['safety']}\n"
     )
     with open(path, "w", encoding="utf-8", newline="\n") as f:
         f.write(text)
@@ -530,6 +532,7 @@ class RandomizerGUI(tk.Tk):
         self.items = tk.BooleanVar(value=True)
         self.transitions = tk.BooleanVar(value=False)
         self.regional = tk.BooleanVar(value=False)
+        self.safety = tk.BooleanVar(value=False)
         self.status = tk.StringVar(
             value="Select the original BLACK SOULS II folder containing Game.exe and Game.rgss3a."
         )
@@ -584,6 +587,9 @@ class RandomizerGUI(tk.Tk):
         ttk.Checkbutton(checks, text="Shuffle within regions", variable=self.regional).grid(
             row=1, column=1, sticky="w", pady=4
         )
+        ttk.Checkbutton(checks, text="Safety (shuffle while preserving reachability)", variable=self.safety).grid(
+            row=2, column=0, columnspan=2, sticky="w", pady=4
+        )
 
         note = (
             "The installer creates Game.rgss3a.bs2randomizer_backup before modifying the archive. "
@@ -633,6 +639,7 @@ class RandomizerGUI(tk.Tk):
             "room_transition_randomization": self._bool_text(self.transitions.get()),
             "regional_transition_randomization": regional,
             "regional_randomization": regional,
+            "safety": self._bool_text(self.safety.get()),
         }
 
     def load_settings(self, silent=False):
@@ -650,6 +657,7 @@ class RandomizerGUI(tk.Tk):
                 cfg.get("regional_transition_randomization", "false"),
             ).lower() == "true"
             self.regional.set(reg)
+            self.safety.set(cfg.get("safety", "false").lower() == "true")
             archive = RGSS3AArchive(os.path.join(game, ARCHIVE_NAME))
             self.status.set(
                 f"Game archive validated ({len(archive.entries)} packed files). "
