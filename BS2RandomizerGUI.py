@@ -8,7 +8,7 @@ import tkinter as tk
 from tkinter import ttk, filedialog, messagebox
 
 APP_TITLE = "BLACK SOULS II Simple Randomizer"
-MOD_NAME = b"BS2 Simple Randomizer v0.8"
+MOD_NAME = b"BS2 Simple Randomizer v0.9"
 ARCHIVE_NAME = "Game.rgss3a"
 ARCHIVE_BACKUP_SUFFIX = ".bs2randomizer_backup"
 SCRIPTS_ENTRY_NAME = "data/scripts.rvdata2"
