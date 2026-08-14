@@ -1,0 +1,12 @@
+Just click Launch GUI and select your game folder
+
+
+Some items are not randomized to prevent softlocks (But transition randomizers can still softlock you)
+Bloody Key
+Old Kings Bonedust
+Big boi cake and smol bean drink
+
+Also transitions may feel odd but they are (mostly) reversible as in A to B goes B to A
+But some doors function in an odd manner causing it not to be reversible the same way, rabbit hole and the ward are good examples
+
+Randomized items in shops will cost 3x their sell value or in cases where there is no sell value will cost the same as the item they replace
